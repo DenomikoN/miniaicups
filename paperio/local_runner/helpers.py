@@ -83,6 +83,10 @@ def get_line_coordinates(start, end, width=WIDTH):
 
 
 TERRITORY_CACHE = {}
+DRAW_TYPE_TO_GL = {
+    'line': pyglet.gl.GL_LINES,
+    'quad': pyglet.gl.GL_QUADS
+}
 
 
 def batch_draw_territory(points, color, redraw, width=WIDTH):
@@ -110,6 +114,12 @@ def batch_draw_territory(points, color, redraw, width=WIDTH):
             pyglet.graphics.glVertex2i(*coor)
     pyglet.gl.glEnd()
 
+def batch_draw_debug(draw_debug):
+    for item in draw_debug:
+        try:
+            pyglet.graphics.draw(item['len'], DRAW_TYPE_TO_GL[item['type']], ('v2i', item['coordinates']), ('c4B',  4 * item['color']))
+        except Exception as e:
+            print('Debug draw exception', e)
 
 def batch_draw(points, color, width=WIDTH):
     width = round(width / 2)

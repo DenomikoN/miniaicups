@@ -2,7 +2,7 @@ from copy import copy
 from game_objects.territory import Territory
 from game_objects.bonuses import Saw
 from constants import UP, DOWN, LEFT, RIGHT, SPEED, WINDOW_HEIGHT, WINDOW_WIDTH, WIDTH
-from helpers import batch_draw, draw_square
+from helpers import batch_draw, draw_square, batch_draw_debug
 
 
 class Player:
@@ -22,6 +22,8 @@ class Player:
         self.score = 0
 
         self.debug_log = []
+        self.draw_debug_before_info = []
+        self.draw_debug_after_info = []
         self.client = client
         self.is_disconnected = False
 
@@ -50,6 +52,14 @@ class Player:
 
         if self.direction == RIGHT:
             self.x += self.speed
+
+    def draw_debug_before(self) :
+        if self.draw_debug_before_info:
+           batch_draw_debug(self.draw_debug_before_info)
+
+    def draw_debug_after(self) :
+        if self.draw_debug_after_info:
+           batch_draw_debug(self.draw_debug_after_info)
 
     def draw_lines(self):
         batch_draw(self.lines, self.line_color)
@@ -107,6 +117,8 @@ class Player:
             if client_answer:
                 debug_info = client_answer.get('debug')
                 error_info = client_answer.get('error')
+                draw_debug_before = client_answer.get('draw_debug_before')
+                draw_debug_after = client_answer.get('draw_debug_after')
                 if debug_info:
                     self.debug_log.append({
                         'tick': tick,
@@ -118,6 +130,10 @@ class Player:
                         'tick': tick,
                         'message': error_info[:200]
                     })
+                if draw_debug_before:
+                    self.draw_debug_before_info = draw_debug_before
+                if draw_debug_after:
+                    self.draw_debug_after_info = draw_debug_after
 
                 return client_answer.get('command')
         except Exception as e:

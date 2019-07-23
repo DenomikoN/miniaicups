@@ -24,6 +24,7 @@ for i in range(1, LR_CLIENTS_MAX_COUNT + 1):
     parser.add_argument('--p{}l'.format(i), type=str, nargs='?', help='Path to log for player {}'.format(i))
 
 parser.add_argument('-t', '--timeout', type=str, nargs='?', help='off/on timeout', default='on')
+parser.add_argument('-tps', '--tps', type=int, nargs='?', help='ticks per second', default='200')
 
 args = parser.parse_args()
 
@@ -80,7 +81,7 @@ class Runner:
         Runner.load_sprites()
         Runner.game = LocalGame(clients, scene, args.timeout == 'on')
         Runner.game.send_game_start()
-        pyglet.clock.schedule_interval(Runner.game_loop_wrapper, 1 / 200)
+        pyglet.clock.schedule_interval(Runner.game_loop_wrapper, 1 / args.tps)
 
 
 Runner.run_game()

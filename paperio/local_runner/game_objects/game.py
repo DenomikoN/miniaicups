@@ -357,6 +357,9 @@ class LocalGame(Game):
 
     def draw(self):
         for player in self.players:
+            player.draw_debug_before();
+
+        for player in self.players:
             player.territory.draw()
 
         Saw.draw_lines()
@@ -367,6 +370,9 @@ class LocalGame(Game):
 
         for player in self.players:
             player.draw_position()
+
+        for player in self.players:
+            player.draw_debug_after();
 
         if len(self.players) == 0:
             self.scene.show_game_over()

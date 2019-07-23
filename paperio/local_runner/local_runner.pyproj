@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d244748f-a11f-46be-8ec9-0ce5aa3041a0}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>localrunner.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <CommandLineArguments> -p1 simple_bot -p2 simple_bot</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+    <Content Include="sprites\explorer.png" />
+    <Content Include="sprites\flash.png" />
+    <Content Include="sprites\saw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clients.py" />
+    <Compile Include="constants.py" />
+    <Compile Include="game_objects\bonuses.py" />
+    <Compile Include="game_objects\game.py" />
+    <Compile Include="game_objects\player.py" />
+    <Compile Include="game_objects\scene.py" />
+    <Compile Include="game_objects\territory.py" />
+    <Compile Include="game_objects\__init__.py" />
+    <Compile Include="helpers.py" />
+    <Compile Include="localrunner.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="game_objects" />
+    <Folder Include="sprites" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
