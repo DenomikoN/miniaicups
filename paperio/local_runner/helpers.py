@@ -121,8 +121,18 @@ def batch_draw_territory(points, color, redraw, width=WIDTH):
 
 def batch_draw_debug(draw_debug):
     for item in draw_debug:
+        type = item['type']
+        size = item['len']
         try:
-            pyglet.graphics.draw(item['len'], DRAW_TYPE_TO_GL[item['type']], ('v2i', item['coordinates']), ('c4B',  4 * item['color']))
+            if type == 'text':
+                (x,y) = tuple(item['coordinates'])
+                pyglet.text.Label(item['text'], font_name='Times New Roman',
+                      font_size=9,
+                      color=tuple(item['color']),
+                      x=x, y=y,
+                      anchor_x='center', anchor_y='center').draw()
+            else:
+                pyglet.graphics.draw(size, DRAW_TYPE_TO_GL[type], ('v2i', tuple(item['coordinates'])), ('c4B',  size * tuple(item['color'])))
         except Exception as e:
             print('Debug draw exception', e)
 
