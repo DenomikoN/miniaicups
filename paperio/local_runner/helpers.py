@@ -89,7 +89,8 @@ DRAW_TYPE_TO_GL = {
     'poligon': pyglet.gl.GL_POLYGON,
     'points': pyglet.gl.GL_POINTS,
     'triangles':pyglet.gl.GL_TRIANGLES,
-    'lineStrip':pyglet.gl.GL_LINE_STRIP
+    'lineStrip':pyglet.gl.GL_LINE_STRIP,
+    'lineLoop':pyglet.gl.GL_LINE_LOOP
 }
 
 
