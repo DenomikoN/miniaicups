@@ -35,7 +35,6 @@
     <Compile Include="game_objects\player.py" />
     <Compile Include="game_objects\scene.py" />
     <Compile Include="game_objects\territory.py" />
-    <Compile Include="game_objects\__init__.py" />
     <Compile Include="helpers.py" />
     <Compile Include="localrunner.py" />
   </ItemGroup>

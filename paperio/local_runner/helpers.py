@@ -84,8 +84,12 @@ def get_line_coordinates(start, end, width=WIDTH):
 
 TERRITORY_CACHE = {}
 DRAW_TYPE_TO_GL = {
-    'line': pyglet.gl.GL_LINES,
-    'quad': pyglet.gl.GL_QUADS
+    'lines': pyglet.gl.GL_LINES,
+    'quads': pyglet.gl.GL_QUADS,
+    'poligon': pyglet.gl.GL_POLYGON,
+    'points': pyglet.gl.GL_POINTS,
+    'triangles':pyglet.gl.GL_TRIANGLES,
+    'lineStrip':pyglet.gl.GL_LINE_STRIP
 }
 
 
